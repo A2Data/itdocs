@@ -1,0 +1,143 @@
+
+<div class="widget-toc-show">
+	<%- partial('_partial/post/toc_collapse') %>
+	<%- partial('_partial/post/sidebarwidget') %>
+</div>
+
+<h1 id="article-title">
+<%
+	var pageTitle = '';
+	if ( is_post() ) {
+		pageTitle = page.slug.split("/")[page.slug.split("/").length-1];
+	}else {
+		pageTitle = page.title ;
+	};
+%>
+	<%- pageTitle %>
+</h1>
+<div class="article-meta">
+	<span><%- config.author %></span>
+	<span>最后编辑于<%- date(page.date, "YYYY-MM-DD") %></span>
+</div>
+<div id="article-content">
+	
+	<%- page.content %>
+</div>
+<% if (is_post()){ %>
+    <div class="post-guide">
+            <% if (page.prev){ %>
+			<a href="<%- url_for(page.prev.path) %>" style="display: contents;">
+        <div class="item left">
+
+                  <span class="material-icons float-left">
+                  arrow_back
+                  </span>
+				  <div class="float-right guide-div guide-left">
+				  <div class="guide-direction">
+					  Previous
+				  </div>
+                  <div class="guide-title">
+				  <%= page.prev.title %>
+					 
+				  </div>
+				  </div>
+        </div>
+			</a>
+            <% } %>
+            <% if (page.next){ %>
+					<a href="<%- url_for(page.next.path) %>" style="display: contents;">
+        <div class="item right">
+			<div class="float-left guide-div guide-right">
+			 <div class="guide-direction">
+			  					Next
+			  </div>
+			   <div class="guide-title">
+				   <%= page.next.title %>
+                <!-- <%- page.next.slug.split("/")[page.slug.split("/").length-1] %> -->
+				</div>
+			</div>
+				<span class="material-icons float-right">
+                arrow_forward
+                </span>
+        </div>
+					</a>
+            <% } %>
+    </div>
+<% } %>
+<% if (theme.valine.enable){ %>
+	<div id="vcomments"></div>
+<% } %>
+<% if (theme.waline.enable){ %>
+	<script src='//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js'></script>
+	<div id="waline"></div>
+<% } %>
+<% if (theme.twikoo.enable){ %>
+	<div id="tcomment"></div>
+	<script src="https://cdn.jsdelivr.net/npm/twikoo@1.0.0/dist/twikoo.all.min.js"></script>
+	<script>
+		twikoo.init({
+		envId: '<%= theme.twikoo.envId %>',
+		el: '#tcomment',
+		// region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，如果您的环境地域不是上海，需传此参数
+		// path: 'window.location.pathname', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+		})
+	</script>
+<% } %>
+
+<div class="desktop-widget">
+
+<% theme.widgets.forEach(function(widget){ %>
+	  			<%- partial('_widget/' + widget) %>
+<% }) %>
+</div>
+<!-- <script>
+// 	<% if (theme.valine.enableComment){ %>
+// 		<!--评论-->
+// 		new Valine({
+// 			av: AV,
+// 			el: '#vcomments',
+// 			notify: false,
+// 			verify: false,
+// 			path: window.location.pathname,
+// 			appId: '<%- theme.valine.appID %>',
+// 			appKey: '<%- theme.valine.appKey %>',
+// 			placeholder: '<%- theme.valine.placeholder %>',
+// 			avatar: '<%- theme.valine.avatar %>',
+// 			recordIP: false
+// 		})
+// 	<% } %>
+// 	<% if (theme.valine.enableCounter){ %>
+//     <!--显示次数-->
+// 		function showTime(Counter) {
+// 			var query = new AV.Query("Counter");
+// 			if($(".leancloud_visitors").length > 0){
+// 				var url = $(".leancloud_visitors").attr('id').trim();
+// 				// where field
+// 				query.equalTo("words", url);
+// 				// count
+// 				query.count().then(function (number) {
+// 					// There are number instances of MyClass where words equals url.
+// 					$(document.getElementById(url)).text(number?  number : '--');
+// 				}, function (error) {
+// 					// error is an instance of AVError.
+// 				});
+// 			}
+// 		}
+// 		<!-- 追加pv-->
+// 		function addCount(Counter) {
+// 			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+// 			var Counter = AV.Object.extend("Counter");
+// 			var query = new Counter;
+// 			query.save({
+// 				words: url
+// 			}).then(function (object) {
+// 			})
+// 		}
+// 		$(function () {
+// 			var Counter = AV.Object.extend("Counter");
+// 			addCount(Counter);
+// 			showTime(Counter);
+// 		});
+// 	<% } %>
+// </script>
+-->

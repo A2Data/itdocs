@@ -1,0 +1,55 @@
+index_file: /index/
+favicon: /index.png
+#Valine
+valine:
+  enable: false
+  AppId: i1I90mFU8urYjNXgiqPT05Jt-gzGzoHsz
+  AppKey: GXgwCzMM0g2CnM8x0WCM7fPQ
+#Waline
+waline:
+  enable: false
+#Twikoo
+#https://console.cloud.tencent.com/tcb/env/overview?envId=datascience-3g3scagk58bf7c4c&rid=4
+twikoo:
+  enable: true
+  envId: datascience-3g3scagk58bf7c4c
+# 是否开启“不蒜子”统计访问量
+busuanzi: false
+newcomment:
+  class: text
+  display: [desktop,mobile] # [desktop, mobile]
+
+sidebar:
+  title_enable: false
+  image_enable: true
+  image_url: https://7.dusays.com/2021/02/10/4c668e7dd6fa5.png
+  image_location: /index/
+ #image_location为点击图片跳转到的地址，可以是相对路径也可以是绝对路径
+
+widgets:
+  - toc
+  - qrcode
+  - notice
+#  - qrcode_1
+#  - qrcode_1
+sidebar_widgets:
+#  - qrcode
+#  - notice
+  - qrcode_1
+  - notice_1
+qrcode:
+  title: 微信公众号
+#  img: https://7.dusays.com/2021/02/09/177750d49c810.jpg
+#  img: https://7.dusays.com/2021/04/25/9ecc781041179.jpg
+#  img: https://7.dusays.com/2021/04/25/f78d170d78dbc.png
+  img: https://7.dusays.com/2021/05/29/08238220cd7e6.jpg
+notice:
+  title: 公告栏
+  content: 放弃不难,但坚持一定很酷！
+
+qrcode_1:
+  title: 商务合作
+  img: https://7.dusays.com/2021/02/09/98229b83aa541.jpg
+notice_1:
+  title: 格言
+  content:  千里之行，始于足下。从心开始，成功不是凭梦想和希望，而是凭努力和实践。

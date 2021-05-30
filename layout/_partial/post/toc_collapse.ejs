@@ -1,0 +1,27 @@
+<div class="toc-button cui-shadow-black">
+	<span class="material-icons">
+	  	toc
+	</span>
+</div>
+<div class="toc-collapse">
+    <div class="toc-collapse-child">
+        <div class="toc-title">
+            <span class="material-icons">toc</span>
+            CONTENTS
+        </div>
+        <%- toc(page.content, {list_number: true}) %>
+    </div>
+</div>
+
+<% if (theme.valine.enable){ %>
+<a href="#vcomments"><div class="comment_button cui-shadow-black">
+    <i class="material-icons-outlined">forum</i>
+</div>
+</a>
+<% } %>
+<% if (theme.twikoo.enable){ %>
+    <a href="#twikoo"><div class="comment_button cui-shadow-black">
+            <i class="material-icons-outlined">forum</i>
+        </div>
+    </a>
+<% } %>

@@ -1,0 +1,88 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,  user-scalable=no">
+	<!-- SEO相关 -->
+	<% if (page.robots) { %>
+		<meta name="robots" content="<%- page.robots %>">
+	<% } else if (theme.seo && theme.seo.robots) { %>
+		<% if (is_home()) { %>
+			<% if (page.prev == 0) { %>
+				<meta name="robots" content="<%- theme.seo.robots.home_first_page %>">
+			<% } else { %>
+				<meta name="robots" content="<%- theme.seo.robots.home_other_pages %>">
+			<% } %>
+		<% } else if (is_archive()) { %>
+			<meta name="robots" content="<%- theme.seo.robots.archive %>">
+		<% } else if (is_category()) { %>
+			<meta name="robots" content="<%- theme.seo.robots.category %>">
+		<% } else if (is_tag()) { %>
+			<meta name="robots" content="<%- theme.seo.robots.tag %>">
+		<% } %>
+	<% } %>
+	<!-- 渲染优化 -->
+	<meta name="renderer" content="webkit">
+	<meta name="force-rendering" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="HandheldFriendly" content="True" >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv='x-dns-prefetch-control' content='on' />
+
+
+	<!-- title -->
+	<%
+	var title = page.title;
+	if ( title == '' ) {
+		var title = page.slug.split("/")[page.slug.split("/").length-1]
+	}else {
+		var title = page.title;
+	};
+	%>
+	<title>
+		<% if (title){ %>
+			<%= title %> |
+		<% } %>
+		<%= config.title %>
+	</title>
+
+	<!-- keywords,description -->
+	<% if (page.keywords){ %>
+		<meta name="keywords" content="<%= page.keywords %>,<%= config.keywords %>" />
+	<% } else if (config.keywords){ %>
+		<meta name="keywords" content="<%= config.keywords %>" />
+	<% } %> <% if (page.description){ %>
+		<meta name="description" content="<%= page.description %>" />
+	<% } else if (config.description){ %>
+		<meta name="description" content="<%= config.description %>" />
+	<% } %>
+
+	<!-- favicon -->
+	<% if (theme.favicon){ %>
+		<%- favicon_tag(theme.favicon) %>
+	<% } %>
+	<%- css('css/mdicon.css') %>
+	<%- css('css/cuiv3.css') %>
+	<%- css('css/main.css') %>
+	<%- css('https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css') %>
+	<%- css('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css') %>
+
+	<%- js('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js') %>
+	<%- js('https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js') %>
+	<%- js('https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js') %>
+	
+	<%- js('js/clipboard.min.js') %>
+	<%- js('js/main.js') %>
+	<%- js('js/cui.js') %>
+		
+  <%- css('fancybox/jquery.fancybox') %>
+  <%- js('fancybox/jquery.fancybox.pack') %>
+
+	<% if (theme.valine){ %>
+		<%- js('https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js') %>
+		<%- js('https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js') %>
+	<% } %>
+	<% if (theme.busuanzi){ %>
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<% } %>
+</head>

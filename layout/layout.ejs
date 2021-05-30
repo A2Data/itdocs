@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- partial('_partial/head') %>
+
+<body>
+	<div class="sidebar-cover"></div>
+	<%- partial('_partial/header.ejs') %>
+	<%- partial('_partial/sidebar.ejs') %>
+	<div id="toc" class="toc-article">
+		<div style="overflow:scroll;margin-bottom: 100%;">
+			<% if (page.toc == false) {%>
+				<%- partial('_partial/post/widget') %>
+			<% } else { %>
+				<%- partial('_partial/post/widget') %>
+			<% } %>
+		</div>
+	</div>
+	<!-- 引入正文 -->
+	<div id="content">
+		<%- body %>
+			
+	</div>
+	<%- partial('_partial/footer.ejs') %>
+	<%- partial('_partial/totop') %>
+</body>
+</html>
+
+<!--动态线条-->
+<!--<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/canvas-nest.min.js"></script>-->
+
+<!--彩带-->
+<!--<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/piao.js"></script>-->
